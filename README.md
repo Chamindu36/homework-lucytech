@@ -1,38 +1,55 @@
-# Frontend Developer Homework Assignment
+# Form Builder
 
-## Objective:
+## Overview
 
-You will be working with an existing form builder. The builder provides a possibility to choose one of several field types, set a key, a label, and add it into a form. Your task is divided into two main parts.
+The Form Builder application is tasked with improving its field input validation and introducing dynamic validation settings. The two primary tasks are as follows:
 
-## Task Details:
+## Task 1: Field Input Validation
 
-### 1. Field Input Validation:
+#### Approach
 
-In the existing application, we need to add validation to each input field according to its assigned type. For instance, if a field's type is ParamType.Number, the system should not allow the input of any non-numeric characters or symbols. Conversely, if the type is ParamType.String, any character input should be acceptable.
+The initial task focuses on implementing input validation for each field based on its assigned type. This validation should activate upon the blur event for each field, ensuring immediate feedback for users.
 
-If a user attempts to input data that does not conform to the field's type, your solution should trigger an error function that displays an appropriate message. Validation should be triggered upon the blur event on each field.
+#### Solution
 
-### 2. Dynamic Validation Setting:
+- Specific validation rules were tailored for different field types, such as "Number."
+- The `validateFieldValue` function was introduced to manage and execute the validation logic.
+- Integration of Redux was undertaken to efficiently control the application's state and facilitate error handling.
 
-In addition to basic field type validation, we need a feature that allows additional, user-defined validation rules to be set directly through the interface. This functionality should allow for rules such as:
+#### Rationale
 
-- The entered value must be greater than or equal to 5.
-- The input must begin with a capital letter.
-- The input must match a specific pattern (e.g., an email format).
-- The input must not contain any special characters.
-- The input must be a valid date. 
+- By centralizing the validation logic within the `validateFieldValue` function, the codebase was kept organized and easy to manage.
+- The use of Redux enhanced the error management system, providing a structured way to handle and display errors consistently.
 
-The interface should allow for the definition of these and other validation rules, without requiring modifications to the codebase for each new rule. The specifics of how you enable this dynamic rule-setting are up to you, but we're looking for an innovative, flexible, and scalable solution.
+### Correct Data Type Validation
+![Correct Number Type Validation](src/assets/Correct_number_validation.png)
+![Correct Date Type Validation](src/assets/Correct_date_validation.png)
+![Correct Boolean Type Validation](src/assets/Correct_boolean_validation.png)
 
-## Submission:
+## Task 2: Dynamic Validation Setting
 
-Submit your solution by pushing your code to a public GitHub repository. Ensure your code is clean, well-commented, and adheres to our current project structure. Also, include a README file that explains your thought process and the design of your solution.
+### Approach
 
-## Evaluation Criteria:
+The secondary task involves implementing a dynamic validation feature, enabling users to define their validation rules through the application interface. This dynamic validation should be versatile and easily adaptable to varying rules without requiring extensive codebase changes.
 
-- The code must be clean, efficient and well-commented.
-- The solution should successfully implement the features described above.
-- The design should be scalable and maintainable, allowing for the possibility of adding more validation types in the future.
-- The README file should provide clear insight into your thought process and the rationale behind your design decisions.
+### Solution
 
-Good luck!
+- Users can select dynamic validation rules for specific fields directly from the user interface.
+- A `validationRules` configuration was introduced, mapping rule names to corresponding validation functions.
+- The `validateFieldValue` function was extended to incorporate dynamic validation rules.
+- An innovative approach was devised to facilitate dynamic rule-setting while minimizing codebase adjustments.
+
+### Rationale
+
+- The adoption of a configuration-based approach ensured scalability without compromising existing code integrity.
+- The design approach enabled the straightforward integration of new validation rules by expanding the `validationRules` object.
+
+### Validation Screenshots
+
+Here are some screenshots showcasing different validation scenarios :
+
+### Dynamic Validation Rules
+![Capital Starting Letter Validation](src/assets/CapitalLetter_validation_for_string.png)
+![Email Format Validation](src/assets/EmailFormat_validation_for_string.png)
+![No Special Characters Validation](src/assets/SpecialChar_validation_for_string.png)
+![Minimum Characters Length Validation](src/assets/MinCharLength_validation_for_string.png)
